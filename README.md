@@ -1,5 +1,6 @@
 # mouseMove
-* So I'm not displayed as away in microsoft Teams
+So I'm not displayed as away in microsoft Teams
+* Windows only
 
 ### Requirements
 
