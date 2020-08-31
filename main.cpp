@@ -3,22 +3,27 @@
 
 using namespace std;
 
+void GetDesktopResolution(int& horizontal, int& vertical);
+
 int main()
 {
     cout << "Starting..." << endl;
 
+    int movement = 1;
+
     while (true)
     {
-        Sleep(5000);
+        Sleep(100);
 
         POINT p;
         if (GetCursorPos(&p))
         {
 
-            cout << "Moving Cursor..." << endl;
+            cout << "Moving Cursor..." <<  movement << endl;
 
-            SetCursorPos(0, 0);
-            SetCursorPos(p.x, p.y);
+            SetCursorPos(p.x + movement, p.y);
+
+            movement = -movement;
         }
     }
 
