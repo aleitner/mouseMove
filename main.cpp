@@ -1,13 +1,10 @@
 #include <iostream>
+
+#ifdef _WIN32
 #include <Windows.h>
 
-using namespace std;
-
-int main()
-{
-    cout << "Starting..." << endl;
-
-    INPUT ip;
+void runLoop() {
+        INPUT ip;
     ip.type = INPUT_KEYBOARD;
     ip.ki.wScan = 0;
     ip.ki.time = 0;
@@ -22,7 +19,7 @@ int main()
         POINT p;
         if (GetCursorPos(&p))
         {
-            cout << "Pressing Control Key..." << endl;
+            std::cout << "Pressing Control Key..." << std::endl;
 
             ip.ki.wVk = VK_CONTROL;
             ip.ki.dwFlags = 0; // 0 for key press
@@ -31,7 +28,7 @@ int main()
             ip.ki.dwFlags = KEYEVENTF_KEYUP;
             SendInput(1, &ip, sizeof(INPUT));
 
-            cout << "Moving Cursor..." <<  movement << endl;
+            std::cout << "Moving Cursor..." <<  movement << std::endl;
 
             SetCursorPos(p.x + movement, p.y);
 
@@ -39,7 +36,27 @@ int main()
         }
     }
 
-    cout << "Terminated..." << endl;
+    return
+}
+
+#else
+
+int runLoop() {
+    std::cout << "This program is not compatible with mac..." << std::endl;
+    return 0;
+}
+
+#endif
+
+using namespace std;
+
+int main()
+{
+    std::cout << "Starting..." << std::endl;
+
+    runLoop();
+
+    std::cout << "Terminated..." << std::endl;
 
     return 0;
 }
