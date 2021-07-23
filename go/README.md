@@ -4,6 +4,8 @@ So I'm not displayed as away in microsoft Teams when I'm doing work on a differe
 ### Requirements
 
 * go 1.14.4+
+* gcc
+* zlib
 
 ### Compilation
 
